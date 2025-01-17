@@ -1,38 +1,23 @@
 import { useState } from 'react'
 import './App.css'
+import WishInput from './WishInput/WishInput'
+import WishList from './WishList/WishList'
 
 function App() {
-  const [wishes] = useState([
+  const [wishes, setWishes] = useState([
     { id: 1, text: 'Learn React', completed: true },
-    { id: 2, text: 'Get a job', completed: false },
-    { id: 3, text: 'Get a job again!', completed: false },
+    { id: 2, text: 'Learn Vite', completed: true },
+    { id: 3, text: 'Build something awesome!', completed: false },
   ])
+
+  const onNewWish = (newWish) => {
+    setWishes((currentWishes) => [...currentWishes, newWish]);
+  }
   return (
     <div className="app">
       <h1>My Wishlist</h1>
-      <fieldset className="wish-input">
-        <legend className="wish-input__label">New Wish:</legend>
-        <input
-          type="text"
-          placeholder="My new Wish"
-        />
-      </fieldset>
-      <ul className="wish-list">
-        {wishes.map((wish) => (
-          <li
-            className={`
-            wish-list__item
-            ${wish.completed ? 'wish-list__item--done' : ''}
-            `}
-          >
-            <input
-              type="checkbox"
-              checked={wish.completed}
-            />
-            <label>{wish.text}</label>
-          </li>
-        ))}
-      </ul>
+      <WishInput onNewWish={onNewWish} />
+      <WishList wishes={wishes} />
     </div>
   )
 }
