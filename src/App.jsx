@@ -10,14 +10,17 @@ function App() {
     { id: 3, text: 'Build something awesome!', completed: false },
   ])
 
-  const onNewWish = (newWish) => {
+  const onNewWishHandler = (newWish) => {
     setWishes((currentWishes) => [...currentWishes, newWish]);
   }
   return (
     <div className="app">
       <h1>My Wishlist</h1>
-      <WishInput onNewWish={onNewWish} />
-      <WishList wishes={wishes} />
+      <WishInput onNewWish={onNewWishHandler} />
+      <WishList
+        wishes={wishes}
+        setWishes={setWishes}
+      />
     </div>
   )
 }

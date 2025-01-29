@@ -1,26 +1,24 @@
 import React from 'react';
+import WishListItem from './WishListItem';
 
-function WishList(props) {
+function WishList({ wishes, setWishes }) {
+
+    const onCompletedChangeHandler = (checked, i) => {
+        const tempWishes = [...wishes];
+        tempWishes[i].completed = checked;
+        setWishes(tempWishes);
+    }
+
     return (
-        <ul className="wish-list">
-            {props.wishes.map((wish) => (
-                <li
+        <ul className='wish-list'>
+            {wishes.map((wish, i) => (
+                <WishListItem
                     key={wish.id}
-                    className={`
-            wish-list__item
-            ${wish.completed ? 'wish-list__item--done' : ''}
-            `}
-                >
-                    <input
-                        type="checkbox"
-                        checked={wish.completed}
-                        id={wish.id}
-                    />
-                    <label htmlFor={wish.id}>{wish.text}</label>
-                </li>
+                    wish={wish}
+                    onCompletedChange={(checked) => onCompletedChangeHandler(checked, i)}
+                />
             ))}
         </ul>
-
 
     );
 };
