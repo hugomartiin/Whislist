@@ -9,6 +9,7 @@ function WishList({ wishes, setWishes }) {
         setWishes(tempWishes);
     }
 
+
     return (
         <ul className='wish-list'>
             {wishes.map((wish, i) => (

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import WishInput from './WishInput/WishInput'
 import WishList from './WishList/WishList'
+import GeneralButton from './components/GeneralButton'
 
 function App() {
   const [wishes, setWishes] = useState([
@@ -21,6 +22,14 @@ function App() {
         wishes={wishes}
         setWishes={setWishes}
       />
+      <GeneralButton
+        actionFunction={() => {
+          setWishes((wishes) => wishes.filter((wish) => !wish.completed));
+        }}
+        buttonText="Clear Completed"
+      />
+
+
     </div>
   )
 }

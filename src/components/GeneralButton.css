@@ -1,0 +1,9 @@
+.general-button {
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    background-color: rgb(119, 42, 46);
+    border: 1px solid;
+    cursor: pointer;
+    color: white;
+    border-radius: 8px;
+}
